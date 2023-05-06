@@ -1,0 +1,8 @@
+{
+  //python linting
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+
+
+  "snippets.ultisnips.pythonPrompt": false
+}

@@ -1,0 +1,8 @@
+require("core.plugin_config._lualine")
+require("core.plugin_config._nvim-tree")
+require("core.plugin_config._tokyodark")
+require("core.plugin_config._telescope")
+require("core.plugin_config._treesitter")
+require("core.plugin_config._cmp")
+require("core.plugin_config._coc")
+require("core.plugin_config.signify")
