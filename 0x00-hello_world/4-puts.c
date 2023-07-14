@@ -1,7 +1,16 @@
-#include<stdio.h>
-int main(){
-	char Mystr[] ="Programming is like building a multilingual puzzle";
-	puts(Mystr);
+#include <stdio.h>
 
-	return 0;
+/**
+ * main - Entry point
+ *
+ * Description: Prints a string using the puts function
+ * Return: 0 (Success)
+ */
+int main(void)
+{
+        char Mystr[] = """Programming is like building a multilingual puzzle";
+        puts(Mystr);
+
+        return 0;
 }
+
