@@ -1,17 +1,14 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * main - check the code
+ * print_alphabet - function to print abc
  *
- * Return: Always 0
+ * Return: 0
  */
-void print_alphabet(void);
-
 void print_alphabet(void) {
-  char ch = 97;
+  char c;
 
-  for (ch = 97; ch <= 122; ch++) {
-    putchar(ch);
+  for (c = 'a'; c <= 'z'; c++) {
+    _putchar(c);
   }
-  putchar('\n');
+  _putchar('\n');
 }
