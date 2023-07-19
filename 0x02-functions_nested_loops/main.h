@@ -1,5 +1,4 @@
-#ifdef MAIN_H
-#define MAIN_H
-int _putchar(char)
+#pragma once
+#include <unistd.h>
+int _putchar(char c);
 void print_alphabet(void);
-#endif
