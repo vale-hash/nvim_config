@@ -9,7 +9,7 @@ vim.opt.writebackup = false
 -- Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 -- delays and poor user experience
 vim.opt.updatetime = 300
-
+ 
 -- Always show the signcolumn, otherwise it would shift the text each time
 -- diagnostics appeared/became resolved
 vim.opt.signcolumn = "yes"
@@ -25,19 +25,26 @@ end
 -- NOTE: There's always a completion item selected by default, you may want to enable
 -- no select by setting `"suggest.noselect": true` in your configuration file
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
--- other plugins before putting this into your config
+-- other plugins before putting this into your config       
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+keyset("i", "<>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<R>" : coc#refresh()', opts)
+keyset("i", "<S-Tab>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"]], opts)
 
--- Make <CR> to accept selected completion item or notify coc.nvim to format
--- <C-g>u breaks current undo, please make your own choice
-keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
--- Use <c-j> to trigger snippets
 keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 -- Use <c-space> to trigger completion
-keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
+--Use <c-space> to trigger completion.
+local function select_confirm_or_newline()
+  if vim.fn.pumvisible() ~= 0 then
+    return vim.fn['coc#_select_confirm']()
+  else
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-g>u', true, true, true) .. '\n', 'n')
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-r>=coc#on_enter()', true, true, true) .. '\n', 'n')
+  end
+end
+
+vim.api.nvim_set_keymap('i', '<CR>', 'v:lua.select_confirm_or_newline()', { expr = true, noremap = true, silent = true })
+
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list

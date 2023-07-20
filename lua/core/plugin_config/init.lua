@@ -6,3 +6,5 @@ require("core.plugin_config._treesitter")
 require("core.plugin_config._cmp")
 require("core.plugin_config._coc")
 require("core.plugin_config.signify")
+require("core.plugin_config._ale")
+

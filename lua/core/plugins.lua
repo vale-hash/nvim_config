@@ -25,6 +25,9 @@ return require('packer').startup(function(use)
   use "williamboman/nvim-lsp-installer"
   use "neovim/nvim-lspconfig"
   
+  --ale
+  use 'dense-analysis/ale'
+  use 'bstevary/betty-in-vim'
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
@@ -52,3 +55,4 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+

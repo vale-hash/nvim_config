@@ -74,6 +74,16 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ale = {
+    loaded = true,
+    path = "/home/vale/.local/share/nvim/site/pack/packer/start/ale",
+    url = "https://github.com/dense-analysis/ale"
+  },
+  ["betty-in-vim"] = {
+    loaded = true,
+    path = "/home/vale/.local/share/nvim/site/pack/packer/start/betty-in-vim",
+    url = "https://github.com/bstevary/betty-in-vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/vale/.local/share/nvim/site/pack/packer/start/cmp-buffer",
